@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include <iostream>
 
 /// Объявление нового имени для беззнакового типа int
@@ -9,27 +8,26 @@ using namespace std;
 
 /**\param matrix − адрес буфера назначения
 * \param graphCount − количество графов
-* \return uchar_array - отсортированный массив
 */
-/// Функция Dxtr() − точка входа в функцию быстрой сортировки
+/// Функция DijkstraAlg() − точка входа в функцию быстрой сортировки
 void DijkstraAlg(uint** matrix, uint graphCount)
 {
     ///> Алгоритм функции
     ///- Инициализация переменных
-    uint* distance = (uint*)malloc(sizeof(uint)  *graphCount);
-    bool* visited = (bool*)malloc(sizeof(bool) * graphCount);
+    uint* distance = new uint [graphCount];
+    bool* visited = new bool [graphCount];
     uint k, index, u, i;
     uint uintMax = INT_MAX * 2 + 1;
-    
+
     ///- Подготовка массивов путей и посещений узлов
     for (i = 0; i < graphCount; ++i) {
         distance[i] = uintMax;
         visited[i] = false;
     }
-    
+
     ///- Расстояние от первого узла до самого себя равно 0
     distance[0] = 0;
-    
+
     ///- Реализация алгоритма
     for (k = 0; k < graphCount - 1; ++k) {
         uint min = uintMax;
@@ -69,7 +67,7 @@ int main()
 {
     ///- Инициализация переменных
     uint graphCount = 0;
-    uint ** matrix = (uint**)malloc(sizeof(uint*) * graphCount);
+    uint** matrix = new uint* [graphCount];
     
     cout << "If the straight way doesn't exist, enter 0 for it." << endl;
     cout << "Number of graphs = ";
@@ -77,7 +75,7 @@ int main()
 
     ///- Заполнение матрицы смежности исходными данными
     for (uint i = 0; i < graphCount; ++i) {
-        matrix[i] = (uint*)malloc(sizeof(uint) * graphCount);
+        matrix[i] = new uint [graphCount];
         for (uint j = 0; j < graphCount; ++j)
             cin >> matrix[i][j];
     }
@@ -89,3 +87,4 @@ int main()
     system("pause");
     return 0;
 }
+
