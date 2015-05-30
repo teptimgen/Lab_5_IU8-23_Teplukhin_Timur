@@ -9,7 +9,7 @@ using namespace std;
 /**\param matrix − адрес буфера назначения
 * \param graphCount − количество графов
 */
-/// Функция DijkstraAlg() − точка входа в функцию быстрой сортировки
+/// Функция DijkstraAlg() − точка входа в функцию алгоритма Дейкстры
 void DijkstraAlg(uint** matrix, uint graphCount)
 {
     ///> Алгоритм функции
